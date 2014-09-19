@@ -1,0 +1,8 @@
+<form id = "login_form" method = "post" action = "/UserProfiles/login/">
+	{% csrf_token %}
+	Username: <input type = "text" name = "username" value = "" size = "25">
+	<br>
+	Password: <input type = "password" name = "password" value = "" size = "25">
+	<br>
+	<input type = "submit" value = "Log in">
+</form>

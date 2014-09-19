@@ -1,0 +1,19 @@
+{% if user.is_active %}
+	<p>Logged in as <a href = "/UserProfiles/{{user.id}}/">{{user}}</a></p>
+	{% else %}
+	<a href = "/UserProfiles/login/">Login</a>
+	{% endif %}
+	{% if user.is_active %}
+	<a href = "/UserProfiles/logout/">Logout</a>
+	{% else %}
+	<a href = "/UserProfiles/register/">Register here</a>
+	{% endif %}
+<h1>Upcoming sessions</h1>
+{% if upcoming_sessions %}
+<ul>
+{% for p in upcoming_sessions %}
+<li>{{p.title}} || {{p.author}} || {{ p.date }} || <a href = "/sessions/{{ p.id }}/join/">Join</a></li><a href = "/sessions/{{p.id}}/details/">Details</a>
+{% endfor %}
+</ul>
+{% endif %}
+

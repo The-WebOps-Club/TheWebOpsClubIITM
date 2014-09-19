@@ -1,0 +1,87 @@
+ .bckstyle
+ {
+ background-color:white;
+}
+.head
+{
+
+}
+.headimg
+{
+padding-left:150px;
+height:200px;
+width:1000px;
+}
+
+.leadrb
+{
+	width:600px;
+	background-color:white;
+	}
+.title
+{
+background-color:rgb(31,137,153);
+color:white;
+padding-bottom:5px;
+margin-bottom:1px;
+font-size:32px;
+text-align:center;
+font-family:'Font Awesome';
+src: url('E:\My Interests\CFI\Webopps\Insti WebOps\Insti Website\font-awesome-4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0');
+src: url('E:\My Interests\CFI\Webopps\Insti WebOps\Insti Website\font-awesome-4.1.0/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('E:\My Interests\CFI\Webopps\Insti WebOps\Insti Website\font-awesome-4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('E:\My Interests\CFI\Webopps\Insti WebOps\Insti Website\font-awesome-4.1.0/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('E:\My Interests\CFI\Webopps\Insti WebOps\Insti Website\font-awesome-4.1.0/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+width:600px
+}
+.rank
+{
+height:30px;
+width:30px;
+margin:2.5px;
+margin-left:4px;
+margin-right:20px;
+font-size:25px;
+border-radius:50%;
+background-color:rgb(31,137,153);
+color:white;
+float:left;
+}
+.details
+{
+height: 35px;
+float:left;
+margin:2.5px;
+margin-right:20px;
+background-color:white;
+border-radius:5px;
+}
+.DP
+{
+height:30px;
+width:40px;
+float:left;
+padding-right:2px;
+padding-left:2px;
+border-radius:5px;
+padding-top:2px;
+}
+.name
+{
+font-family:georgia;
+font-size:15px;
+color:rgb(31,137,153);
+padding:10px;
+float:left;
+}
+.XP
+{
+
+}
+.block
+{
+
+height:40px;
+width:600px;
+padding-bottom:5px;
+padding-top:5px;
+float:center;
+border-color:rgb(31,137,153);
+}

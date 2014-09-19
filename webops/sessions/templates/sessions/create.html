@@ -1,0 +1,6 @@
+<h1>Creating a new session</h1>
+<form action = "/sessions/create/" method = "POST">
+{% csrf_token %}
+{{ form }}
+<input type = "submit" value = "Create">
+</form>

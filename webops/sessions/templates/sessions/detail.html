@@ -1,0 +1,12 @@
+{% if current_session %}
+<ul>
+	<li>{{ current_session.title }}</li>
+	<li>{{ current_session.description }}</li>
+	<li>{{ current_session.date }}</li>
+	<li>{{ current_session.author }}</li>
+</ul>
+{% for i in reg_users %}
+	{{i}}
+{% endfor %}
+<a href = "#">Join this session</a>
+{% endif %}

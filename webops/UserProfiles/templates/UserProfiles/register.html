@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>User Registration - IITM Webops</title>
+	</head>
+	<body>
+		{% if registered %}
+		Thank you for registering!
+		<a href = "/UserProfiles">Back to homepage</a>
+		{% endif %}
+		<form action="/UserProfiles/register/" method="POST"> {% csrf_token %}
+			<h2>Please enter your details . . .</h2>
+    		{{ form.as_p }}
+    		{{ form2.as_p}}
+    		<h3>Interests</h3>
+    		<input type = "checkbox" name = "interests[]" value = "1" />HTML
+    		<input type = "checkbox" name = "interests[]" value = "2" />CSS
+			<input type="submit" value="Sign Up">
+		</form>
+
+</html>
