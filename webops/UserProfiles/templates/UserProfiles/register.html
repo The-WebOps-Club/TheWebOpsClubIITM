@@ -13,8 +13,11 @@
     		{{ form.as_p }}
     		{{ form2.as_p}}
     		<h3>Interests</h3>
-    		<input type = "checkbox" name = "interests[]" value = "1" />HTML
-    		<input type = "checkbox" name = "interests[]" value = "2" />CSS
+    		{% for i in interests %}
+    		<input type = "checkbox" name = "interests[{{i.pk}}]" value = "{{i.pk}}" />{{i}}
+    		<br>
+    		{% endfor %}
+    		<input type = "text" name = "new_interests" value = "Enter new interests here" />
 			<input type="submit" value="Sign Up">
 		</form>
 

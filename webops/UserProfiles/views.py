@@ -3,10 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
-from UserProfiles.models import Student
+from UserProfiles.models import Student, Interests
 from django.template import RequestContext
-from PIL import Image as PImage
-from os.path import join as pjoin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
@@ -61,6 +59,18 @@ def user_register(request):
 				user.set_password(user.password)
 				profile = form2.save(commit=False)
 				profile.user = user
+				print(request.POST)
+				#Now we have to add new models corresponding to these new interests__DONE
+				new_interests = request.POST["new_interests"]
+				existing_interests = Interests.objects.all()
+				#We also have to check if it's not already there. Add capitalization stuff
+				for i in new_interests.split(','):
+					if not i.strip() in existing_interests:
+						new_interest = Interests.create(i.strip()) 
+						new_interest.save()
+				#Now we have to add the respective interests to each of the users. Just indexes will do
+				
+				#print(request.POST['interests'])
 				#imfn = pjoin(MEDIA_ROOT, user.photo.name)
 				#im = PImage.open(imfn)
 				#im.thumbnail((160,160), PImage.ANTIALIAS)
@@ -80,6 +90,8 @@ def user_register(request):
 			form2 = UserProfileForm()
 		context = {}
 		context.update(csrf(request))
+		interests = Interests.objects.all()
+		context['interests'] = interests
 		context['form'] = form
 		context['form2'] = form2
 		#context['image'] = "/media/"+ user.photo.name

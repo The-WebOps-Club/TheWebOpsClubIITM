@@ -12,7 +12,7 @@ class UserRegisterForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = Student
-		fields = ('writeup', 'photo')
+		fields = ('rollno', 'writeup', 'photo')
 
 class ProfileForm(forms.ModelForm):
     class Meta:

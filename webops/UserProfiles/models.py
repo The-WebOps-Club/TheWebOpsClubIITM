@@ -7,6 +7,7 @@ class Student(models.Model):
 	user = models.OneToOneField(User, primary_key=True)
 	writeup = models.TextField(max_length = 200)
 	score = models.IntegerField(default = 0)
+	rollno = models.CharField(max_length = 8)
 	#image = models.ImageField()
 	interests = models.TextField(max_length=100)
 	def __str__(self):
@@ -18,3 +19,8 @@ class Interests(models.Model):
 
 	def __str__(self):
 		return self.interest
+
+	@classmethod
+	def create(cls, title):
+		interest_instance = cls(interest = title)
+		return interest_instance
