@@ -1,210 +1,440 @@
 {% load staticfiles %}
-{% load list_iter %}
-<link rel = "stylesheet" type = "text/css" href = "{% static 'UserProfiles/leaderboard.css' %}" />
- <html>
-	<title> Leadorboard</title>
-	
-	<head>
-		<link rel="stylesheet" href="E:\My Interests\CFI\Webopps\Insti WebOps\Insti Website\leadorboard.css" media="all" type="text/css">
-	
-	</head>
-	
-	<body class="bckstyle" onload="border()">
-	{% if user.is_active %}
-	<p>Logged in as <a href = "/UserProfiles/{{user.id}}/">{{user}}</a></p>
-	{% else %}
-	<a href = "/UserProfiles/login/">Login</a>
-	{% endif %}
-	{% if user.is_active %}
-	<a href = "/UserProfiles/logout/">Logout</a>
-	{% else %}
-	<a href = "/UserProfiles/register/">Register here</a>
-	{% endif %}
-		<div class="head">
-			<img src='{% static 'UserProfiles/logo.png' %}' class="headimg">
-		</div>		
-		<br>
-		<center><br><br><br>
-			
-			<div class="leadrb" border="1">
-				
-				<div colspan="2" class="title">
-					LEADERBOARD
-				</div>
-				
-				{% for p in user_list %}
-				<div class="block" border="1" title="{{p.username}}" onmouseover="highlit(this,{{forloop.counter0}})" onmouseout="back(this,{{forloop.counter0}})">
-					
-					<div class="rank">
-						{{forloop.counter}}
-					</div>
-					
-					<div class ="details">
-						<img src="2.jpg" class="DP" href="">
-					</div>
-					
-					<div class="name" id="name">
-						<a href = "/UserProfiles/{{p.user.id}}/">{{p.user}}</a>
-					</div>
-					
-					<div class="XP">
-					
-					</div>
-					
-					<div class="badge">
-					
-					</div>
-				</div>
-				{% endfor %}
-				
-				
-				<!--<div class="block" onmouseover="highlit(this,1)" onmouseout="back(this,1)" title="Sri Ram Gupta">
-					
-					<div class="rank">
-						2
-					</div>
-					
-					<div class ="details">
-						<img src="3.jpg" class="DP">
-					</div>
-					
-					<div class="name">
-						Sri Ram Gupta
-					</div>
-					
-					<div class="XP">
-					
-					</div>
-					
-					<div class="badge">
-					
-					</div>
-				
-				</div>
-				
-				<div class="block" border="1" title="KRISHNA CHAITANYA" onmouseover="highlit(this,2)" onmouseout="back(this,2)">
-					
-					<div class="rank">
-						3
-					</div>
-					
-					<div class ="details">
-						<img src="2.jpg" class="DP" href="">
-					</div>
-					
-					<div class="name" id="name">
-						KRISHNA CHAITANYA
-					</div>
-					
-					<div class="XP">
-					
-					</div>
-					
-					<div class="badge">
-					
-					</div>
-				</div>
-				
-				<div class="block" border="1" title="KRISHNA CHAITANYA" onmouseover="highlit(this,3)" onmouseout="back(this,3)">
-					
-					<div class="rank">
-						4
-					</div>
-					
-					<div class ="details">
-						<img src="2.jpg" class="DP" href="">
-					</div>
-					
-					<div class="name" id="name">
-						KRISHNA CHAITANYA
-					</div>
-					
-					<div class="XP">
-					
-					</div>
-					
-					<div class="badge">
-					
-					</div>
-				</div>
-				
-				<div class="block" border="1" title="KRISHNA CHAITANYA" onmouseover="highlit(this,4)" onmouseout="back(this,4)">
-					
-					<div class="rank">
-						5
-					</div>
-					
-					<div class ="details">
-						<img src="2.jpg" class="DP" href="">
-					</div>
-					
-					<div class="name" id="name">
-						KRISHNA CHAITANYA
-					</div>
-					
-					<div class="XP">
-					
-					</div>
-					
-					<div class="badge">
-					
-					</div>
-				</div>
-				
-				<div class="block" border="1" title="KRISHNA CHAITANYA" onmouseover="highlit(this,5)" onmouseout="back(this,5)">
-					
-					<div class="rank">
-						6
-					</div>
-					
-					<div class ="details">
-						<img src="2.jpg" class="DP" href="">
-					</div>
-					
-					<div class="name" id="name">
-						KRISHNA CHAITANYA
-					</div>
-					
-					<div class="XP">
-					
-					</div>
-					
-					<div class="badge">
-					
-					</div>
-				</div>-->
-				
-		</center>
-	<br>
-		<script>
-		var x=document.getElementsByClassName('name');
-		
-		var y=document.getElementsByClassName('details');
-		
-		var z=document.getElementsByClassName('rank');
-		
-		function highlit(ele,k){
-		ele.style.backgroundColor="rgb(31,137,153)"
-		x[k].style.color="White"
-		z[k].style.backgroundColor="white"
-		z[k].style.color="rgb(31,137,153)"
-		}
-		
-		function back(ele,k){
-		ele.style.backgroundColor="white"
-		x[k].style.color="rgb(31,137,153)"
-		z[k].style.backgroundColor="rgb(31,137,153)"
-		z[k].style.color="white"
-		}
-		
-		function border(){
-		var x=document.getElementsByClassName('leadrb');
-		x[0].style.border="thin solid rgb(31,137,153)"
-		x[0].style.borderRadius="5px"
-		}
-		
-		</script>
-	
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="C:\Users\Manikanth\Desktop\logo1.ico">
+
+    <title>LeaderBoard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'UserProfiles/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'UserProfiles/navbar-static-fixed.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/simple-sidebar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/extra.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/social-icons.css' %}">
+
+    <!-- % % % % % % % WEBKIT ANIMATIONS % % % % % % % % % %-->
+
+     <!--   <style type="text/css">
+      div>table>tbody>tr>td{
+        -webkit-animation: movie 5s;
+        -webkit-animation-itreration-count:1;
+      }
+      @-webkit-keyframes movie{
+       0%{background-color: rgb(31,137,153);color: white;}
+      25%{background-color: white;color: rgb(31,137,153);}
+      50%{background-color: rgb(31,137,153);color: white}
+      75%{background-color: white;color: rgb(31,137,153);}
+      100%{background-color: rgb(31,137,153);color: white;}
+
+      }
+
+    
+    </style>
+    <style type="text/css">
+      .panel-heading,div>h3{
+        -webkit-animation: try 5s;
+        -webkit-animation-itreration-count:1;
+      }
+      @-webkit-keyframes try{
+       0%{background-color: white; color: rgb(31,137,153);}
+      25%{background-color: rgb(31,137,153); color: white;}
+      50%{background-color: white; color: rgb(31,137,153);}
+      75%{background-color: rgb(31,137,153); color: white;}
+     100%{background-color: white; color: rgb(31,137,153);}
+
+      }
+    </style>-->
+  </head>
+  
+  <body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:white">
+      
+      <div class="container">
+        
+        <div class="navbar-header">
+          
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          
+          </button>
+          
+          <a href="#">
+            
+            <img src="{% static 'UserProfiles/logo1.png' %}" style="margin-left: -34px">
+          
+          </a>
+        </div>
+        
+        <style type="text/css">
+        
+           div>ul>li:hover{background: -webkit-linear-gradient(rgb(31,137,165),white);border-radius: 3px;}
+
+            div>ul.dropdown-menu:hover{
+               #oneeffect.style.display: block;
+             }
+        </style>
+        
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav" style="margin-top:26px; margin-left: 38px">
+             <li class="dropdown" id="drop">
+                
+                <a href="#" class="dropdown-toggle" data-toggle="Developers" > App Developers<span class="caret"></span></a>
+               
+                <ul class="dropdown-menu" role="menu">
+                  
+                  <li><a href="ll">Anroid Developers</a></li>
+                  <li><a href="#">Ios Developers</a></li>
+                  <li><a href="#">Windows Developers</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                
+                </ul>
+
+            </li>
+            
+            <li id="one"><a href="#about">Gallery</a></li>
+            <li><a href="#about">Events</a></li>
+            <li><a href="#about">Leaderboard</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right"style="margin-top:26px; margin-left: 38px">
+            {% if user.is_active %}
+            <li><a href = "/UserProfiles/{{user.id}}/">Logged in as {{user}}</a></li>
+            {% else %}
+            <li><a href = "/UserProfiles/login/">Login</a></li>
+            {% endif %}
+            {% if user.is_active %}
+            <li><a href="/UserProfiles/logout/">Logout</a></li>
+            {% else %}
+            <li><a href="/UserProfiles/register/">Join the Club</a></li>
+            {% endif %}
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+    <div id="oneeffect" style="position:absolute;left:271px;top:74px;" >
+     
+      <style type="text/css">
+
+        #oneeffect{background: -webkit-linear-gradient(white,rgb(31,137,153));z-index: 1;display: none;}
+       ul.drop{
+         list-style-type: none;
+          font-size: 13px;
+         color:white;
+          padding-top:10px;
+         padding-left:5px;
+          padding-right: 5px;
+        }
+        a{
+           text-decoration: none;
+           text-transform: none;
+         }
+        ul.drop>li{
+         padding: 2px
+        }
+
+      </style>
+      
+      <ul class="drop">
+      
+        <li><a href="#" style="text-decoration:none;color:rgb(31,137,153)"> Android Developers</a></li>
+        <li><a href="#" style="text-decoration:none;color:rgb(31,137,153)"> IOS Developers</a></li>
+        <li><a href="#" style="text-decoration:none;color:rgb(31,137,153)"> Google Developers</a></li>
+        <hr style="margin:5px;padding:0px;">
+        <li><a href="#" style="text-decoration:none;color:rgb(31,137,153)"> Another Seperate link</a></li>
+      </ul>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'UserProfiles/jquery.min.js' %}"></script>
+    <script src="{% static 'UserProfiles/bootstrap.min.js' %}"></script>
+
  
- </html>
+    <div id="wrapper" class="menuVisible">
+        
+        <!-- Sidebar -->
+      <div id="page-content-wrapper">
+
+          <div class="ebtn">
+              <div class="row">
+                  
+                <div class="col-lg-12">
+                  
+                  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="color:white;">E-Learning
+                    <style type="text/css"> div>a.btn-default{
+                      background: -webkit-linear-gradient(right,rgb(31,137,153) 0 ,white 130)
+                      }</style>
+                  </a>
+
+                 </div>
+
+              </div>
+
+          </div>
+        
+          <div id="sidebar-wrapper" >
+            
+            <ul class="sidebar-nav" style="margin-left: 15px">
+                <li>
+                    <a href="http://www.w3schools.com/html/default.asp">HTML</a>
+                </li>
+                <li>
+                    <a href="http://www.w3schools.com/css/default.asp">CSS</a>
+                </li>
+                <li>
+                    <a href="http://www.w3schools.com/js/">JS</a>
+                </li>
+                <li>
+                    <a href="http://www.djangobook.com/en/2.0/index.html">Django</a>
+                </li>
+                <li>
+                    <a href="#">Python</a>
+                </li>
+                <li>
+                    <a href="#">Photoshop</a>
+                </li>
+                <li>
+                    <a href="#">BootStrap</a>
+                </li>
+                <li>
+                    <a href="#">Foundation</a>
+                </li>
+                <li>
+                    <a href="#">C/C++</a>
+                </li>
+                <li>
+                    <a href="#">JS</a>
+                </li> 
+            </ul>
+        </div>
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("menuVisible");
+    });
+    </script>
+    
+    <center>
+     <div style="height:450px;width:1100px;padding-left:120px;padding-right:120px;padding-top:20px;padding-bottom:20px" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          
+        </ol>
+        <div class="carousel-inner" style="border-radius:8px">
+          <div class="item active">
+            <img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide" src="{% static 'UserProfiles/industry.jpg' %}" style="height:400px;width:900px;padding-left:10px">
+          </div>
+          <div class="item">
+            <img data-src="holder.js/1140x500/auto/#666:#444/text:Second slide" alt="Second slide" src="{% static 'UserProfiles/instiapp.jpg' %}" style="height:400px;width:950px;padding-left:10px">
+          </div>
+          <div class="item">
+            <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide" src="{% static 'UserProfiles/wiki-it.jpg' %}" style="height:400px;width:950px;padding-left:10px">
+          </div>
+
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div></center>
+
+    <br>
+
+    <div class="col-sm-4">
+         <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Leaderboard</h3>
+            </div>
+            
+             <table class="table table-condensed" >
+            
+            <tbody>
+            {% for p in user_list %}
+
+              <tr id="row"style="color:rgb(31,137,153);background-color:white;margin:5px" >
+                <td width="75px"syle="padding-right:30px"><div class="numb" style="height:30px;width:30px;border-radius:50%;color:white;background-color:rgb(31,137,153);text-align:center;font-size:21px;" >{{forloop.counter}}</div></td>
+                <td width="75px"><img src="{{p.photo.url}}" style="width:30px;height:30px"></td></a>
+                <td style="padding-left:20px;width:500px" href="#"><a href="/UserProfiles/{{p.user.id}}/"style="text-decoration:none;font-family:BANKGOTHIC MD BT;font-size:24px;text-align:left;color:rgb(31,137,153)">{{p}}</a></td>
+                <td><a href="kkc.html" style="text-decoration:none;color:rgb(31,137,153);font-family:BANKGOTHIC MD BT;font-size:24px">{{p.score}}XP</a>  </td>
+                <td style="padding-left:15px;"><button type="button" class="btn btn-default btn-lg" id="{{forloop.counter}}" title="Details">
+                <span class="glyphicon glyphicon-align-justify" style="color:rgb(31,137,153)"></span>
+                </button></td>
+              </tr>
+            {% endfor %}
+
+            </tbody>
+          </table>
+       </div>
+   </div>
+   <div id="social-r" class="tooltips">
+
+   <a href="social-icons.html#" rel="tooltip" title="Dropbox" class="dropbox">Dropbox</a>
+
+</div>
+{% for p in user_list %}
+<div id="content{{forloop.counter}}" style="display:none;color:rgb(31,137,153);padding:10px;padding-left:5px">
+<img src="img/1.jpg" style="height:30px;width:30px;positon:relative;top:5px;left:10px;">
+<a href="#" style="text-decoration:none;color:rgb(31,137 153);font-size:15px;font-family:Times New Roman;position:relative;top:0px;left:20px;">{{p}}</a>
+<br><br>
+<span style="font-family:BANKGOTHIC MD BT;font-size:18px;">{{p.score}} Xp</span>
+<br><br>
+<span style="font-size:14px;position:relative;margin:5px;float:left"><u>Skills </u>: {{p.interests}}</span>
+<br><br>
+<div class="progress-bar" role="progressbar" aria-valuenow="{{p.score}}" aria-valuemin="0" aria-valuemax="100" style="width: 100%;border-radius:3px;">
+    {{p.score}}%
+  </div>
+  <br>
+</div>
+{% endfor %}
+
+
+  <br>
+
+
+
+
+
+   <div id="footer">
+
+   </div>
+
+   <script type="text/javascript">
+
+            $(document).ready(function(){
+              $('#drop').popover({
+                trigger:'click',
+                html:true,
+                placement:'bottom',
+                content: function(){
+                  return $('#oneeffect').html();
+                },
+              });
+            });
+
+            $(document).ready(function(){
+                 $('#1').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                
+                  content: function(){
+                    return $('#content1').html();
+                  },
+              });
+              });
+
+              $(document).ready(function(){
+                 $('#2').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                  content : function(){
+                    return $('#content2').html();
+                  },
+              });
+              });
+
+              $(document).ready(function(){
+                 $('#3').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                  content : function(){
+                    return $('#content3').html();
+                  },
+              });
+              });
+
+              $(document).ready(function(){
+                 $('#4').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                  content:function(){
+                    return $('#content4').html();
+                  },
+              });
+              });
+
+              $(document).ready(function(){
+                 $('#5').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                  content:function(){
+                    return $('#content5').html();
+                  },
+              });
+              });
+
+              $(document).ready(function(){
+                 $('#6').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                  content:function(){
+                    return $('#content6').html();
+                  },
+              });
+              });
+
+              $(document).ready(function(){
+                 $('#7').popover({
+                  trigger: 'click',
+                  html: true,
+                  placement:'right',
+                  content:function(){
+                    return $('#content7').html();
+                  },
+              });
+              });
+
+</script>
+
+  

@@ -1,0 +1,34 @@
+.number{
+	border-radius: 50%;
+	height:30px;
+	width: 30px;
+	font-size: 21px;
+	background-color: rgb(31,137,153);
+	color: white;
+	text-align: center;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 0px;
+}
+.name{
+	height: auto;
+	width: 	auto;	
+	font-size: 18px;
+	position: relative;
+	top:-28px;
+	left: 90px;
+	padding-left: 19px;
+	padding-right: 2px;
+	font-family: BANKGOTHIC MD BT;
+	color: rgb(31,137,153);
+	float: left;
+	background-color: white;
+}
+.image{
+	position: relative;
+	top: -34px;
+	left: -193px;
+	height: 32px;
+	width: 32px;
+	margin: 2px;
+}

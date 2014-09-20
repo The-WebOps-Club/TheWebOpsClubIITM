@@ -81,7 +81,7 @@ USE_TZ = True
 
 LOGIN_URL='UserProfiles/login/'
 
-MEDIA_ROOT = 'E:/Coding Work/WebOpsProject/webops/media/'
+MEDIA_ROOT = 'E:\\Coding Work\\WebOpsProject\\TheWebOpsClubIITM\\webops\\media\\images\\'
 
 MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,11 @@
+<p>Username : {{user.username}} </p>
+<p>Write-up : {{student.writeup}} </p>
+<p>Score : {{student.score}}</p>
+<p>Interests : {{student.interests}}</p>
+<img src = "{{student.photo.url}}" />
+<br>
+{% if user.is_authenticated %}
+<a href = "UserProfiles/edit.html">Edit</a>
+{% endif %}
+<br>
+<a href = "/UserProfiles/">Back</a>

@@ -47,41 +47,29 @@ def user_logout(request):
 	return HttpResponseRedirect("/UserProfiles/")
 
 def user_register(request):
-	#if request.user.is_anonymous():
 		user = request.user
 		registered = False
-		img = None
 		if request.method == 'POST':
 			form = UserRegisterForm(request.POST)
-			form2 = UserProfileForm(request.POST)
+			form2 = UserProfileForm(request.POST, request.FILES)
 			if form.is_valid and form2.is_valid:
+				new_interests = request.POST["new_interests"]
+				existing_interests = Interests.objects.all()
+				if not new_interests == "":
+					for i in new_interests.split(','):
+						if not i.strip() in existing_interests:
+							new_interest = Interests.create(i.strip()) 
+							if not new_interest == " ":
+								new_interest.save()
 				user = form.save()
 				user.set_password(user.password)
 				profile = form2.save(commit=False)
 				profile.user = user
-				print(request.POST)
-				#Now we have to add new models corresponding to these new interests__DONE
-				new_interests = request.POST["new_interests"]
-				existing_interests = Interests.objects.all()
-				#We also have to check if it's not already there. Add capitalization stuff
+				interest_list = request.POST.getlist('interests')
+				for i in interest_list:
+					profile.interests += (i + ',')
 				for i in new_interests.split(','):
-					if not i.strip() in existing_interests:
-						new_interest = Interests.create(i.strip()) 
-						new_interest.save()
-				#Now we have to add the respective interests to each of the users. Just indexes will do
-				
-				#print(request.POST['interests'])
-				#imfn = pjoin(MEDIA_ROOT, user.photo.name)
-				#im = PImage.open(imfn)
-				#im.thumbnail((160,160), PImage.ANTIALIAS)
-				#im.save(imfn, "JPEG") 
-				#interest_list = request.POST.getlist('interests')
-				#new_list = list()
-				#for i in interest_list:
-					#new_list.append(str(i))
-				#What you have to do is convert these bloody integers to strings
-				#newest_list = ",".join(new_list)
-				#profile.interests = newest_list
+					profile.interests += (i + ',')
 				profile.save()
 				registered = True
 				return HttpResponse("User Created Successfully.")
@@ -94,11 +82,7 @@ def user_register(request):
 		context['interests'] = interests
 		context['form'] = form
 		context['form2'] = form2
-		#context['image'] = "/media/"+ user.photo.name
-		#Pass the context to the required template
 		return render_to_response('UserProfiles/register.html', context)
-	#else :
-		#return HttpResponseRedirect('/')
 def user_detail(request, student_id):
 	student = get_object_or_404(Student, pk=student_id)
 	user = User.objects.get(id = student.user_id)
