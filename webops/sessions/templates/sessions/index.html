@@ -1,13 +1,11 @@
-{% if user.is_active %}
-	<p>Logged in as <a href = "/UserProfiles/{{user.id}}/">{{user}}</a></p>
-	{% else %}
-	<a href = "/UserProfiles/login/">Login</a>
-	{% endif %}
-	{% if user.is_active %}
-	<a href = "/UserProfiles/logout/">Logout</a>
-	{% else %}
-	<a href = "/UserProfiles/register/">Register here</a>
-	{% endif %}
+{% extends 'sessions/base.html' %}
+{% block title %}
+<title>Sessions</title>
+{% endblock %}
+{% block new_session_link %}
+ <li><a href="/sessions/create">Create</a></li>
+{% endblock %}
+{% block content %}
 <h1>Upcoming sessions</h1>
 {% if upcoming_sessions %}
 <ul>
@@ -16,4 +14,4 @@
 {% endfor %}
 </ul>
 {% endif %}
-
+{% endblock %}

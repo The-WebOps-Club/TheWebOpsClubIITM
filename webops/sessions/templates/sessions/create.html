@@ -1,6 +1,16 @@
+{% extends 'sessions/base.html' %}
+{%  block content %}
 <h1>Creating a new session</h1>
 <form action = "/sessions/create/" method = "POST">
 {% csrf_token %}
-{{ form }}
+{{ form.as_p }}
 <input type = "submit" value = "Create">
 </form>
+{% endblock %}
+{% block datepicker %}
+<script>
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+</script>
+{% endblock %}

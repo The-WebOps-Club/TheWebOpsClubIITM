@@ -24,7 +24,9 @@
   <body>
     <script src="{% static 'UserProfiles/jquery.min.js' %}"></script>
     <script src="{% static 'UserProfiles/bootstrap.min.js' %}"></script>
-    {% include 'UserProfiles/navbar.html' %}  
+    <script src="{% static 'UserProfiles/jqueryui.js' %}"></script>
+    {% block datepicker %}{% endblock %}
+    {% include 'sessions/navbar.html' %}  
     {% include 'UserProfiles/scripts.html' %}  
     {% block content %} {% endblock %}
 </body>

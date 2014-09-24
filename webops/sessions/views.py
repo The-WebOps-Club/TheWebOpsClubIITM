@@ -19,7 +19,9 @@ def create_new(request):
 	if request.method == 'POST':
 		form = SessionForm(request.POST)
 		if form.is_valid():
-			form.save()
+			session = form.save(commit = False)
+			session.author = user
+			session.save()
 			return HttpResponse("Session Created Successfully")
 	else:
 		form = SessionForm()

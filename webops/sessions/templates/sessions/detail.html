@@ -1,3 +1,5 @@
+{% extends 'sessions/base.html' %}
+{% block content %}
 {% if current_session %}
 <ul>
 	<li>{{ current_session.title }}</li>
@@ -10,3 +12,4 @@
 {% endfor %}
 <a href = "#">Join this session</a>
 {% endif %}
+{% endblock %}
