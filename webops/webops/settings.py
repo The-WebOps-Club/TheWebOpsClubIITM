@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'south',
     'UserProfiles',
     'sessions',
+    'project',
 )
 
 MIDDLEWARE_CLASSES = (

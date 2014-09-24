@@ -36,7 +36,7 @@
    </div>
 {% for p in user_list %}
 <div id="content{{forloop.counter}}" style="display:none;color:rgb(31,137,153);padding:10px;padding-left:5px">
-<img src="img/1.jpg" style="height:30px;width:30px;positon:relative;top:5px;left:10px;">
+<img src="{{p.photo.url}}" style="height:30px;width:30px;positon:relative;top:5px;left:10px;">
 <a href="#" style="text-decoration:none;color:rgb(31,137 153);font-size:15px;font-family:Times New Roman;position:relative;top:0px;left:20px;">{{p}}</a>
 <br><br>
 <span style="font-family:BANKGOTHIC MD BT;font-size:18px;">{{p.score}} Xp</span>
@@ -44,7 +44,7 @@
 <span style="font-size:14px;position:relative;margin:5px;float:left"><u>Skills </u>: {{p.interests}}</span>
 <br><br>
 <div class="progress-bar" role="progressbar" aria-valuenow="{{p.score}}" aria-valuemin="0" aria-valuemax="100" style="width: 100%;border-radius:3px;">
-    {{p.score}}%
+    {{p.score}}
   </div>
   <br>
 </div>

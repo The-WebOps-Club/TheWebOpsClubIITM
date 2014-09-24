@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block title %}{% endblock %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'UserProfiles/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'UserProfiles/navbar-static-fixed.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/simple-sidebar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/extra.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'UserProfiles/social-icons.css' %}">
+    
+  </head>
+  
+  <body>
+    <script src="{% static 'UserProfiles/jquery.min.js' %}"></script>
+    <script src="{% static 'UserProfiles/bootstrap.min.js' %}"></script>
+    <script src="{% static 'UserProfiles/jqueryui.js' %}"></script>
+    {% block datepicker %}{% endblock %}
+    {% include 'project/navbar.html' %}  
+    {% include 'UserProfiles/scripts.html' %}  
+    {% block content %} {% endblock %}
+</body>
+</html>

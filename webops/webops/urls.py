@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from UserProfiles.models import Student
 from sessions.models import SessionDetails
 from django.contrib import admin
-from webops import settings
+from webops import settings, views
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -11,7 +11,9 @@ urlpatterns = patterns('',
 	url(r'^UserProfiles/', include('UserProfiles.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sessions/', include('sessions.urls')),
+    url(r'^projects/', include('project.urls')),
     url(r'^index', 'index'),
+    url(r'^main/', include('webops.urls')),
     url(r'^media/(.*)$', 'django.views.static.serve', {'document_root' : settings.MEDIA_ROOT}),
     #url(r'^accounts/login/$', 'login'),
 	#url(r'^accounts/logout/$', 'logout'),
